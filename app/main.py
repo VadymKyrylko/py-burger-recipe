@@ -39,10 +39,8 @@ class OneOf(Validator):
     def __init__(self, options: tuple) -> None:
         self.options = options
 
-    def validate(self, value: int | str) -> bool:
-        if value in self.options:
-            return True
-        else:
+    def validate(self, value: int | str) -> None:
+        if value not in self.options:
             raise ValueError(f"Expected {value} to be one of {self.options}.")
 
 
